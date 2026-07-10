@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Solution pour &quot;lire la suite&quot;</title>
+    <link rel='stylesheet' href='https://main--ds-gouv.netlify.app/dist/dsfr.main.css'>
+<link rel='stylesheet' href='https://main--ds-gouv.netlify.app/dist/utility/utility.main.css'>
+<link rel='stylesheet' href='https://main--ds-gouv.netlify.app/dist/utility/icons/icons.min.css'><link rel="stylesheet" href="./style.css">
+<style>
+  body {
+  margin: 0.5rem;
+}
+
+.read-more__content {
+  display: block;
+}
+
+.read-more__content--hidden,
+.read-more__summary--hidden {
+  display: none;
+}
+
+.read-more__summary {
+  display: block;
+}
+
+.read-more__button {
+  display: block;
+}
+
+[aria-expanded=false] + .read-more__content {
+  display: none;
+}
+
+[aria-expanded=true] + .read-more__content {
+  display: block;
+}
+
+[aria-expanded=true] .more,
+[aria-expanded=false] .less,
+[aria-expanded=true] .read-more__summary {
+  display: none;
+}
+
+.read-more {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.read-more .read-more__button {
+  order: 1;
+}
+</style>
+  </head>
+    
+  <body>
+  <main role="main" lang="fr">
+  <h1>Solution technique pour "Lire la suite"</h1>
+  
+  
+  <div class="read-more">
+    <!-- Le script change l'état de l'attribut aria-expanded ; le code CSS gère l'affichage et le masquage des éléments en foncton de l'état de l'attribut. 
+L'attribut aria-controls pointe vers la version complète de la description (élément read-more__content). 
+Dans le contexte d'un composant réutilisable ces attributs sont à générer dynamiquement. 
+ -->
+    <button type="button" aria-expanded="false" aria-controls="details" class="read-more__button">
+      <span class="read-more__summary fr-mt-0-5v">
+        <!--Résumé -->
+        Réécriture de l'application Effectifs V3...
+      </span>
+      <span class="fr-btn fr-btn--tertiary-no-outline read-more__button">
+        <span class="more">
+          Lire la suite <span class="fr-icon-arrow-down-s-line" aria-hidden="true"></span>
+        </span>
+        <span class="less">
+Réduire <span class="fr-icon-arrow-up-s-line" aria-hidden="true"></span>
+        </span></span>
+    </button>
+    <!-- Ci dessous, l'id référencé dans l'attribut aria-controls sur le bouton -->
+    <p class="read-more__content fr-mb-n0-5v fr-mt-1v fr-ml-1v" id="details">
+    <!-- Description complète -->
+      Réécriture de l'application
+      Effectifs V3
+      Emplois et Effectifs, qui
+      permet le recensement et
+      GESTION ET
+      le suivi des emplois,
+      PILOTAGE DU SI
+      Autres servi
+      effectifs,ETP, missions,
+      metiers et compétences
+      des agents du SI.
+    </p>
+  </div>
+   <script>
+     const readMoreButtons = document.querySelectorAll(
+  ".read-more button.read-more__button"
+);
+readMoreButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    btn.ariaExpanded = btn.ariaExpanded == "true" ? "false" : "true";
+  });
+});
+   </script>
+
+  </body>
+  
+</html>
