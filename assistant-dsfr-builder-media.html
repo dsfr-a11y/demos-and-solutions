@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Assistant alternative Contenu médias (hors vidéo) DSFR</title>
+    <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+<style>
+  body {
+  padding: 2rem;
+}
+
+#q1-yes-case,
+#q2-yes-case {
+  display: none;
+}
+
+#q1-yes:checked ~ #q1-yes-case,
+#q2-yes:checked ~ #q2-yes-case {
+  display: block;
+}
+.answer {
+  display: none;
+  padding: 0.4rem;
+  margin-bottom : 0;
+  font-style: italic;
+  border: 1px dotted #ddd;
+  background-color: #ccc;
+}
+
+fieldset > :checked + label + .answer {
+  display: block;
+}
+fieldset fieldset {
+  display: block;
+  margin: 0.5rem;
+}
+fieldset fieldset input[type="radio"] {
+  float: left;
+  display: block;
+  clear: left;
+  margin-top: 0.2rem;
+  margin-right: 0.2rem;
+}
+fieldset fieldset label {
+  float: left;
+  display: block;
+  clear: right;
+}
+fieldset fieldset p {
+  clear: both;
+}
+</style>
+  </head>
+    
+  <body>
+  <form  lang="fr">
+  
+<fieldset id="q1" class="fr-fieldset">
+  <legend class="fr-fieldset__legend--regular fr-fieldset__legend">L'image comporte t'elle du texte ?</legend>
+  <input type="radio" name="q1" id="q1-yes">
+  <label for="q1-yes">Oui</label>
+  <fieldset id="q1-yes-case">
+    <legend hidden>
+      L'image comporte du texte
+    </legend>
+    <input type="radio" name="q1-yes-case" id="q1-yes-case1">
+    <label for="q1-yes-case1">et le texte dans l'image est-il présent à proximité en contenu textuel dans la page.
+    <br>
+      (Par exemple, dans <i>
+      "Description ou Source")
+      </i>
+    </label>
+    <!-- déco -->
+    <p class="answer">
+      L'image n'est pas porteuse d'information.
+    </p>
+    <input type="radio" name="q1-yes-case" id="q1-yes-case2">
+    <label for="q1-yes-case2">et le texte dans l'image est-il utilisé comme effet visuel uniquement.</label>
+    <!-- déco -->
+    <p class="answer">
+      L'image n'est pas porteuse d'information.
+    </p>
+    <input type="radio" name="q1-yes-case" id="q1-yes-case3">
+    <label for="q1-yes-case3">et le texte dans l’image n’est pas présent ailleurs.</label>
+    <!-- Image porteuse d'information -->
+    <p class="answer">
+      L'image est porteuse d'information : mettez le texte présent dans l'image dans l'<b>alternative textuelle</b>
+    </p>
+  </fieldset>
+  <input type="radio" name="q1" id="q1-no">
+  <label for="q1-no">Non</label>
+
+</fieldset>
+<fieldset id="q2" hidden>
+  <legend>Est-ce que l’image contribue à comprendre la signification de la page courante ou du contexte ?</legend>
+  <input type="radio" name="q2" id="q2-yes">
+  <label for="q2-yes">Oui</label>
+  <fieldset id="q2-yes-case">
+    <legend hidden>
+      L'image contribue à comprendre la signification de la page courante ou du contexte 
+    </legend>
+    <input type="radio" name="q2-yes-case" id="q2-yes-case1">
+    <label for="q2-yes-case1">... et c’est une simple illustration ou photographie.</label>
+    <!-- Image porteuse d'information -->
+    <p class="answer">
+      L'image est porteuse d'information : Utilisez une description brève de l’image, d’une manière qui transmette cette signification dans l'<b>alternative textuelle</b>. 
+      
+ <br>
+        Si présence d'une <i>Description/Source : consulter l'équipe Accessibilité <a href="mailto:contact-accessibilite@dgfip.finances.gouv.fr">contact-accessibilite@dgfip.finances.gouv.fr</a>
+        </i>
+      </p>
+    <input type="radio" name="q2-yes-case" id="q2-yes-case2">
+    <label for="q2-yes-case2">... et c’est un graphique ou une information complexe.</label>
+    <!-- Image porteuse d'information nécessitant une légende -->
+    <p class="answer">
+      L'image est porteuse d'information : Utilisez une description brève de l’image dans l'<b>alternative textuelle</b>, et incluez une description complète dans la page ou via un bouton ou un lien.
+    </p>
+    <input type="radio" name="q2-yes-case" id="q2-yes-case3">
+    <label for="q2-yes-case3">... et elle présente une information qui est redondante avec le contenu textuel proximité.</label>
+    <!-- déco -->
+    <p class="answer">
+      L'image n'est pas porteuse d'information.
+    </p>
+  </fieldset>
+  <input type="radio" name="q2" id="q2-no">
+  <label for="q2-no">Non</label>
+</fieldset>
+
+<fieldset id="q3" hidden>
+  <legend>Est-ce que l’image est purement décorative ?</legend>
+  <input type="radio" name="q3" id="q3-yes">
+  <label for="q3-yes">Oui</label>
+  <!-- déco -->
+  <p class="answer">
+    L'image n'est pas porteuse d'information.
+  </p>
+  <input type="radio" name="q3" id="q3-no">
+  <label for="q3-no">Non / Je ne sais pas</label>
+  <!-- Consultez l'équipe accessbilité pour vous aider -->
+  <p class="answer">
+    Consultez l'équipe accessiblité.
+<br>
+    <a href="mailto:contact-accessibilite@dgfip.finances.gouv.fr">contact-accessibilite@dgfip.finances.gouv.fr</a>
+  </p>
+</fieldset>
+<p>Référence : <a href="https://www.w3.org/WAI/tutorials/images/decision-tree/fr">Un arbre décisionnel pour l'attribut alt (WC3C)</a></p>
+</form>
+    <script>
+const q1no = document.querySelector("#q1-no");
+const q2no = document.querySelector("#q2-no");
+const q1 = document.querySelector("#q1");
+const q3 = document.querySelector("#q3");
+
+q1.addEventListener("change", (event) => {
+  q2.hidden = !q1no.checked;
+
+  if (!q1no.checked) {
+    q3.hidden = true;
+  }
+});
+q2.addEventListener("change", (event) => {
+  q3.hidden = !q2no.checked;
+});
+
+q1.addEventListener("reset", function() {
+  q2.hidden = true;
+});
+q2.addEventListener("reset", function() {
+  q3.hidden = true;
+});
+
+    </script>
+
+  </body>
+  
+</html>
