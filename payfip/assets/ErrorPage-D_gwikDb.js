@@ -1,1 +1,0 @@
-import{_ as o,e as t,r as a,o as n}from"./index-uaEHZWIs.js";const s={name:"ErrorPage",computed:{errorValue(){return this.$route.path==="/500"?"500":this.$route.path==="/503"?"503":"404"}}};function p(c,u,_,f,l,r){const e=a("fr-error-page");return n(),t(e,{errorType:r.errorValue},null,8,["errorType"])}const m=o(s,[["render",p]]);export{m as default};
