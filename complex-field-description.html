@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Template DSFDR</title>
+  <link rel='stylesheet' href='https://main--ds-gouv.netlify.app/dist/dsfr.main.css'>
+  <link rel='stylesheet' href='https://main--ds-gouv.netlify.app/dist/utility/utility.main.css'>
+  <link rel='stylesheet' href='https://main--ds-gouv.netlify.app/dist/utility/icons/icons.min.css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    #format-fact:focus {
+      background-color: var(--background-alt-yellow-tournesol);
+    }
+  </style>
+</head>
+
+<body>
+  <main role="main" class="fr-my-2w fr-container--fluid fr-px-5v">
+    <div class="fr-container">
+      <div class="fr-grid-row fr-grid-row--gutters"><!-- Col left-->
+        <div class="fr-col fr-col-lg-8 fr-col-sm-12">
+          <h1>Démo Description compliquée pour PayFip</h1>
+          <div class="fr-input-group" id="input-group-1">
+            <label class="fr-label" for="input-0">
+              Identifiant de la structure publique <span class="fr-hint-text">
+                Format attendu : 6 chiffres (exemple : 123456)
+              </span>
+            </label>
+            <input class="fr-input" aria-describedby="input-0-messages" id="input-0" type="text">
+            <div class="fr-messages-group" id="input-0-messages" aria-live="polite"></div>
+          </div>
+          <div class="fr-input-group" id="input-group-2">
+            <label class="fr-label" for="input-1"> Référence de la facture
+              <span class="fr-hint-text">Format attendu : X caractères, tirets compris (<a href="#format-fact">Plus
+                  d'informations sur les formats</a>)
+              </span>
+            </label>
+            <input class="fr-input" aria-describedby="input-1-messages" id="input-1" type="text">
+            <div class="fr-messages-group" id="input-1-messages" aria-live="polite"></div>
+          </div>
+
+          <div class="fr-input-group" id="input-group-3">
+            <label class="fr-label" for="input-2"> Numéro entrée patient
+              <span class="fr-hint-text">Format attendu : X chiffres
+              </span>
+            </label>
+            <input class="fr-input" aria-describedby="input-2-messages" id="input-2" type="text">
+            <div class="fr-messages-group" id="input-2-messages" aria-live="polite"></div>
+          </div>
+        </div>
+        <!-- Col right-->
+        <div class="fr-col fr-col-lg-4 fr-col-sm-12" id="format-fact" tabindex="-1">
+          <h2>Quels formats de référence de facture sont
+            acceptés ?</h2>
+          <div>
+            <ul>
+              <li> AAAA-BB-CC-DDDDDDDDDDDDD </li>
+              <li>AAAA-BBBBBBBB-CCCCCC</li>
+              <li>AAAA-BB-CCCCCCCCCC</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src='https://main--ds-gouv.netlify.app/dist/dsfr.nomodule.min.js'></script>
+  <script>
+    const descLinks = document.querySelectorAll("a[href='#format-fact']");
+    descLinks.forEach(function (descLink) {
+      descLink.addEventListener("click", function (event) {
+        event.preventDefault();
+        focusAnchor(descLink);
+      })
+    })
+    function focusAnchor(link) {
+      const anchorTarget = document.querySelector(link.getAttribute("href"));
+      anchorTarget.focus();
+
+    }
+  </script>
+</body>
+
+</html>
