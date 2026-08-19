@@ -19,7 +19,8 @@
 <body>
   <main role="main" class="fr-my-2w fr-container--fluid fr-px-5v">
     <div class="fr-container">
-      <div class="fr-grid-row fr-grid-row--gutters"><!-- Col left-->
+      <div class="fr-grid-row fr-grid-row--gutters">
+        <!-- Col left-->
         <div class="fr-col fr-col-lg-8 fr-col-sm-12">
           <h1>Démo Description compliquée pour PayFip</h1>
           <div class="fr-input-group" id="input-group-1">
@@ -49,17 +50,28 @@
             <input class="fr-input" aria-describedby="input-2-messages" id="input-2" type="text">
             <div class="fr-messages-group" id="input-2-messages" aria-live="polite"></div>
           </div>
+          <div class="fr-grid-row--right">
+            <div class="fr-col fr-col-4">
+              <button type="button" class="fr-btn">Rechercher votre facture</button>
+
+            </div>
+          </div>
         </div>
         <!-- Col right-->
-        <div class="fr-col fr-col-lg-4 fr-col-sm-12" id="format-fact" tabindex="-1">
-          <h2>Quels formats de référence de facture sont
-            acceptés ?</h2>
-          <div>
-            <ul>
-              <li> AAAA-BB-CC-DDDDDDDDDDDDD </li>
-              <li>AAAA-BBBBBBBB-CCCCCC</li>
-              <li>AAAA-BB-CCCCCCCCCC</li>
-            </ul>
+        <div class="fr-col fr-col-lg-4 fr-col-sm-12">
+          <h2>Qu’est ce que PayFIP ? </h2>
+          <p>PayFiP vous permet de payer vos factures publiques (hors impôts) 24h/24, 7j/7, en toute sécurité. (logo cadenas)</p>
+          <hr aria-hidden="true">
+          <div id="format-fact" tabindex="-1">
+            <h2>Quels formats de référence de facture sont
+              acceptés ?</h2>
+            <div>
+              <ul>
+                <li> AAAA-BB-CC-DDDDDDDDDDDDD </li>
+                <li>AAAA-BBBBBBBB-CCCCCC</li>
+                <li>AAAA-BB-CCCCCCCCCC</li>
+              </ul>
+          </div>
           </div>
         </div>
       </div>
