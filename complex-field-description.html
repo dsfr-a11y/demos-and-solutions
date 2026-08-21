@@ -13,6 +13,25 @@
     #format-fact:focus {
       background-color: var(--background-alt-yellow-tournesol);
     }
+
+    .highlight,
+    a[href="#format-fact"]:hover~#format-fact,
+    a[href="#format-fact"]:focus~#format-fact,
+    a[href="#format-fact"]:hover {
+      border: 1px solid #000;
+    }
+
+    .fr-sr-only:focus {
+      width: inherit !important;
+      height: inherit !important;
+      clip: initial !important;
+      overflow: inherit !important;
+      display: inherit !important;
+      position: inherit !important;
+      margin: inherit;
+      padding: inherit;
+      white-space: inherit;
+    }
   </style>
 </head>
 
@@ -22,7 +41,11 @@
       <div class="fr-grid-row fr-grid-row--gutters">
         <!-- Col left-->
         <div class="fr-col fr-col-lg-8 fr-col-sm-12">
-          <h1>Démo Description compliquée pour PayFip</h1>
+          <h1>Exemple de format complexe</h1>
+          <p class="fr-text--xs">En fonction de votre référence de facture, un champ supplémentaire peut s'afficher de manière dynamique. 
+           <br>
+            Tous les champs sont obligatoires.
+          </p>
           <div class="fr-input-group" id="input-group-1">
             <label class="fr-label" for="input-0">
               Identifiant de la structure publique <span class="fr-hint-text">
@@ -33,9 +56,10 @@
             <div class="fr-messages-group" id="input-0-messages" aria-live="polite"></div>
           </div>
           <div class="fr-input-group" id="input-group-2">
-            <label class="fr-label" for="input-1"> Référence de la facture
-              <span class="fr-hint-text">Format attendu : X caractères, tirets compris (<a href="#format-fact">Plus
-                  d'informations sur les formats</a>)
+            <label class="fr-label" for="input-1"> 
+              <span id="format-link-desc">Référence de la facture</span>
+              <span class="fr-hint-text">Format attendu : X caractères, tirets compris (<a href="#format-fact"
+                  aria-describedby="format-link-desc">Plus d'informations sur les formats</a>)
               </span>
             </label>
             <input class="fr-input" aria-describedby="input-1-messages" id="input-1" type="text">
@@ -50,17 +74,17 @@
             <input class="fr-input" aria-describedby="input-2-messages" id="input-2" type="text">
             <div class="fr-messages-group" id="input-2-messages" aria-live="polite"></div>
           </div>
-          <div class="fr-grid-row--right">
-            <div class="fr-col fr-col-4">
+          <div class="fr-grid-row fr-grid-row--right">
+            <div class="fr-col fr-col-4" style="text-align: right;">
               <button type="button" class="fr-btn">Rechercher votre facture</button>
-
             </div>
           </div>
         </div>
         <!-- Col right-->
         <div class="fr-col fr-col-lg-4 fr-col-sm-12">
           <h2>Qu’est ce que PayFIP ? </h2>
-          <p>PayFiP vous permet de payer vos factures publiques (hors impôts) 24h/24, 7j/7, en toute sécurité. (logo cadenas)</p>
+          <p>PayFiP vous permet de payer vos factures publiques (hors impôts) 24h/24, 7j/7, en toute sécurité. (logo
+            cadenas)</p>
           <hr aria-hidden="true">
           <div id="format-fact" tabindex="-1">
             <h2>Quels formats de référence de facture sont
@@ -71,7 +95,13 @@
                 <li>AAAA-BBBBBBBB-CCCCCC</li>
                 <li>AAAA-BB-CCCCCCCCCC</li>
               </ul>
-          </div>
+              <p class="fr-hidden-xl fr-hidden-lg">
+                <a href="#input-1">retour à la saisie de la référence</a>
+              </p>
+              <p class="fr-hidden fr-unhidden-lg fr-unhidden-xl">
+                <a href="#input-1" class="fr-sr-only">retour à la saisie de la référence</a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -85,11 +115,31 @@
         event.preventDefault();
         focusAnchor(descLink);
       })
+      descLink.addEventListener("focus", function (event) {
+        highlightAnchor(descLink)
+      })
+      descLink.addEventListener("mouseover", function (event) {
+        highlightAnchor(descLink)
+      })
+      descLink.addEventListener("blur", function (event) {
+        removehighlightAnchor(descLink)
+      })
+      descLink.addEventListener("mouseout", function (event) {
+        removehighlightAnchor(descLink)
+      })
     })
     function focusAnchor(link) {
       const anchorTarget = document.querySelector(link.getAttribute("href"));
       anchorTarget.focus();
 
+    }
+    function highlightAnchor(link) {
+      const anchorTarget = document.querySelector(link.getAttribute("href"));
+      anchorTarget.classList.add("highlight");
+    }
+    function removehighlightAnchor(link) {
+      const anchorTarget = document.querySelector(link.getAttribute("href"));
+      anchorTarget.classList.remove("highlight");
     }
   </script>
 </body>
