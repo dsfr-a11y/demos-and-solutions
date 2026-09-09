@@ -42,8 +42,9 @@
         <!-- Col left-->
         <div class="fr-col fr-col-lg-8 fr-col-sm-12">
           <h1>Exemple de format complexe</h1>
-          <p class="fr-text--xs">En fonction de votre référence de facture, un champ supplémentaire peut s'afficher de manière dynamique. 
-           <br>
+          <p class="fr-text--xs">En fonction de votre référence de facture, un champ supplémentaire peut s'afficher de
+            manière dynamique.
+            <br>
             Tous les champs sont obligatoires.
           </p>
           <div class="fr-input-group" id="input-group-1">
@@ -56,7 +57,7 @@
             <div class="fr-messages-group" id="input-0-messages" aria-live="polite"></div>
           </div>
           <div class="fr-input-group" id="input-group-2">
-            <label class="fr-label" for="input-1"> 
+            <label class="fr-label" for="input-1">
               <span id="format-link-desc">Référence de la facture</span>
               <span class="fr-hint-text">Format attendu : X caractères, tirets compris (<a href="#format-fact"
                   aria-describedby="format-link-desc">Plus d'informations sur les formats</a>)
@@ -87,6 +88,56 @@
             cadenas)</p>
           <hr aria-hidden="true">
           <div id="format-fact" tabindex="-1">
+            <h2>
+
+              Où trouver les références de la facture ?
+            </h2>
+            <p>
+
+              Pour payer en ligne par carte bancaire, virement ou prélèvement vous devez renseigner les informations
+              disponibles sur votre facture émise par la DGFiP.
+              
+            </p>
+            <p>
+
+              <button aria-controls="modal-0" data-fr-opened="false" type="button" class="fr-btn fr-btn--tertiary"> Voir exemple en
+                image</button>
+              </p>
+            <dialog id="modal-0" class="fr-modal" aria-labelledby="modal-0-title" data-fr-concealing-backdrop="true">
+              <div class="fr-container fr-container--fluid fr-container-md">
+                <div class="fr-grid-row fr-grid-row--center">
+                  <div class="fr-col-12 fr-col-md-8 fr-col-lg-6">
+                    <div class="fr-modal__body">
+                      <div class="fr-modal__header">
+                        <button aria-controls="modal-0" title="Fermer" type="button" id="button-5"
+                          class="fr-btn--close fr-btn">Fermer</button>
+                      </div>
+                      <div class="fr-modal__content">
+                        <h2 id="modal-0-title" class="fr-modal__title">
+                          <span class="fr-icon-info-line fr-icon--lg" aria-hidden="true"></span> Image d'exemple des
+                          références de la facture
+                        </h2>
+                        <!-- axe-linter-disable aria-allowed-role-->
+                        <figure role="group" class="fr-content-media"
+                          aria-label="Dans une facture, les références Identifiant structure publique, Référence de la facture et N&deg; d'entrée se trouvent dans le bloc Comment payer ? ">
+                          <div class="fr-content-media__img">
+                            <img src="img/exemple-image-references-factures.png"
+                              alt="Exemple des références dans une facture" width="90%">
+                            <!-- L’alternative de l’image (attribut alt) doit toujours être présente, sa valeur peut-être vide (image n’apportant pas de sens supplémentaire au contexte) ou non (porteuse de texte ou apportant du sens) selon votre contexte -->
+                          </div>
+                          <figcaption class="fr-content-media__caption"> Dans une facture, les références "Identifiant
+                            structure publique", "Référence de la facture" et "N&deg; d'entrée" se trouvent dans le bloc
+                            "Comment payer ? "</figcaption>
+                        </figure>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </dialog>
+            <hr aria-hidden="true">
             <h2>Quels formats de référence de facture sont
               acceptés ?</h2>
             <div>
