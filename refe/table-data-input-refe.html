@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel='stylesheet' href='https://main--ds-gouv.netlify.app/dist/dsfr.main.css'>
+  <link rel='stylesheet' href='https://main--ds-gouv.netlify.app/dist/utility/utility.main.css'>
+  <link rel='stylesheet' href='https://main--ds-gouv.netlify.app/dist/utility/icons/icons.min.css'>
+  <style>
+    /* Styles créés pour la démo*/
+    .fr-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+      display: block;
+    }
+
+    .fr-grid-row:focus-within .fr-label {
+      position: inherit;
+      width: initial;
+      height: initial;
+      padding: initial;
+      clip: initial;
+      margin: initial;
+      overflow: inherit;
+    }
+
+    /* Données de l'année précédente : dans le code avant le champ */
+    .fr-div-function .fr-input-group {
+      display: inline-grid;
+    }
+
+    .fr-prev-input {
+      order: +2;
+      margin-bottom: 0;
+    }
+
+    .total dd {
+      padding-inline-start: 0;
+    }
+
+
+    /* Styles d'origine */
+
+    .loading-overlay[data-v-a00843dd] {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #00000080;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      cursor: not-allowed
+    }
+
+    .loading-content[data-v-a00843dd] {
+      background-color: var(--background-default-grey);
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 6px #0000001a;
+      max-width: 90%
+    }
+
+    .loading-content p[data-v-a00843dd] {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: var(--text-default-grey)
+    }
+
+    .spinner[data-v-a00843dd] {
+      border: 4px solid var(--background-alt-grey);
+      border-left-color: var(--button-action-high-blue);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin-a00843dd 1s linear infinite;
+      margin: 0 auto
+    }
+
+    @keyframes spin-a00843dd {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .visually-hidden[data-v-a00843dd] {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      .spinner[data-v-a00843dd] {
+        animation: none;
+        border-left-color: transparent
+      }
+    }
+
+    .fr-title-card {
+      background-color: var(--background-alt-raised-grey-active)
+    }
+
+    .spanCommentaire {
+      color: var(--text-disabled-grey);
+      font-size: 14px
+    }
+
+    .infoBulle {
+      color: var(--text-active-blue-france)
+    }
+
+    .fr-span-cat {
+      text-align: center;
+      color: var(--text-default-grey)
+    }
+
+    .fr-div-function {
+      border-top: solid 1px var(--text-default-grey)
+    }
+
+    .fr-div-function-cat {
+      border-bottom: solid 1px var(--text-default-grey)
+    }
+
+    .fr-title-function {
+      align-content: center
+    }
+
+    .grilleVentilation input {
+      width: 75px !important;
+      display: inline-block !important;
+      text-align: center
+    }
+
+    .fr-input-group {
+      margin-bottom: .5rem !important
+    }
+
+    .modale-header {
+      background-color: #00f
+    }
+
+    .total-ventilation-modale {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--background-default-grey);
+      border: .1vb solid var(--border-default-grey);
+      box-shadow: 0 2px 8px #00000026
+    }
+
+    .fr-div-background-change:nth-child(2n) {
+      background-color: var(--background-alt-blue-france)
+    }
+
+    .spSages[data-v-f93f7997] {
+      font-weight: lighter
+    }
+
+    .loading-overlay[data-v-f93f7997] {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #00000080;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      cursor: not-allowed
+    }
+
+    .loading-content[data-v-f93f7997] {
+      background-color: var(--background-default-grey);
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 6px #0000001a;
+      max-width: 90%
+    }
+
+    .loading-content p[data-v-f93f7997] {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: var(--text-default-grey)
+    }
+
+    .spinner[data-v-f93f7997] {
+      border: 4px solid var(--background-alt-grey);
+      border-left-color: var(--button-action-high-blue);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin-f93f7997 1s linear infinite;
+      margin: 0 auto
+    }
+
+    @keyframes spin-f93f7997 {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    .visually-hidden[data-v-f93f7997] {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      .spinner[data-v-f93f7997] {
+        animation: none;
+        border-left-color: transparent
+      }
+    }
+
+    .spSages[data-v-43eb77c1] {
+      font-weight: lighter
+    }
+  </style>
+</head>
+
+<body>
+  <div class="fr-container">
+
+    <div class="fr-div-background-change fr-col-12"><!-- Header catégories -->
+      <!-- les entêtes sont masqués, car en l'absence de sémantique de tableau, ils ne sont pas pertinents-->
+      <div class="fr-grid-row" aria-hidden="true">
+        <div class="fr-col-7"></div>
+        <div class="fr-col-1 fr-span-cat"><b>A++</b></div>
+        <div class="fr-col-1 fr-span-cat"><b>A+</b></div>
+        <div class="fr-col-1 fr-span-cat"><b>A</b></div>
+        <div class="fr-col-1 fr-span-cat"><b>B</b></div>
+        <div class="fr-col-1 fr-span-cat"><b>C</b></div>
+      </div><!-- Lignes -->
+      <div class="fr-grid-row fr-div-function" role="group" aria-labelledby="di">
+        <h4 class="fr-col-7 fr-title-function fr-text--md fr-text--regular" id="di">
+          Développement informatique
+        </h4>
+        <div class="fr-col-1 fr-span-cat">
+          <div class="fr-input-group grilleVentilation" id="fr-input-group-0eab5392-7182-4eba-9c63-8de2c921d924">
+            <p class="fr-text--xs fr-prev-input"><span class="fr-sr-only">Ventilation précédente AA+</span> - <span
+                class="fr-sr-only">Aucune donnée</span></p>
+            <label class="fr-label" for="fr-input-0eab5392-7182-4eba-9c63-8de2c921d924"><!---->A++<!----></label>
+            <input id="fr-input-0eab5392-7182-4eba-9c63-8de2c921d924" class="fr-input"
+              aria-describedby="fr-input--messages-0eab5392-7182-4eba-9c63-8de2c921d924"
+              name="fr-input-0eab5392-7182-4eba-9c63-8de2c921d924" type="text" placeholder="-" autocomplete="off"
+              inputmode="decimal" autocorrect="false" autocapitalize="none" spellcheck="false">
+            <div class="fr-messages-group" id="fr-input--messages-0eab5392-7182-4eba-9c63-8de2c921d924"
+              aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="fr-col-1 fr-span-cat">
+          <div class="fr-input-group grilleVentilation" id="fr-input-group-ca4ddadd-8901-4259-afc7-366e7e356b3a">
+            <p class="fr-text--xs fr-prev-input"><span class="fr-sr-only">ventilation précédente A+</span> - <span
+                class="fr-sr-only">Aucune donnée</span></p>
+            <label class="fr-label" for="fr-input-ca4ddadd-8901-4259-afc7-366e7e356b3a"><!---->A+<!----></label><input
+              id="fr-input-ca4ddadd-8901-4259-afc7-366e7e356b3a" class="fr-input"
+              aria-describedby="fr-input--messages-ca4ddadd-8901-4259-afc7-366e7e356b3a"
+              name="fr-input-ca4ddadd-8901-4259-afc7-366e7e356b3a" type="text" placeholder="-" autocomplete="off"
+              inputmode="decimal" autocorrect="false" autocapitalize="none" spellcheck="false">
+            <div class="fr-messages-group" id="fr-input--messages-ca4ddadd-8901-4259-afc7-366e7e356b3a"
+              aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="fr-col-1 fr-span-cat">
+          <div class="fr-input-group grilleVentilation" id="fr-input-group-9960a7ef-32ac-40f0-8356-d8ffa476a723">
+            <p class="fr-text--xs fr-prev-input"><span class="fr-sr-only">ventilation précédente A</span> - <span
+                class="fr-sr-only">Aucune donnée</span></p>
+            <label class="fr-label" for="fr-input-9960a7ef-32ac-40f0-8356-d8ffa476a723"><!---->A<!----></label><input
+              id="fr-input-9960a7ef-32ac-40f0-8356-d8ffa476a723" class="fr-input"
+              aria-describedby="fr-input--messages-9960a7ef-32ac-40f0-8356-d8ffa476a723"
+              name="fr-input-9960a7ef-32ac-40f0-8356-d8ffa476a723" type="text" placeholder="-" autocomplete="off"
+              inputmode="decimal" autocorrect="false" autocapitalize="none" spellcheck="false">
+            <div class="fr-messages-group" id="fr-input--messages-9960a7ef-32ac-40f0-8356-d8ffa476a723"
+              aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="fr-col-1 fr-span-cat">
+          <div class="fr-input-group grilleVentilation" id="fr-input-group-2318eba1-414f-49b9-91ed-7b242b5ee130">
+            <p class="fr-text--xs fr-prev-input"><span class="fr-sr-only">ventilation précédente B</span> - <span
+                class="fr-sr-only">Aucune donnée</span></p>
+            <label class="fr-label" for="fr-input-2318eba1-414f-49b9-91ed-7b242b5ee130"><!---->B<!----></label><input
+              id="fr-input-2318eba1-414f-49b9-91ed-7b242b5ee130" class="fr-input"
+              aria-describedby="fr-input--messages-2318eba1-414f-49b9-91ed-7b242b5ee130"
+              name="fr-input-2318eba1-414f-49b9-91ed-7b242b5ee130" type="text" placeholder="-" autocomplete="off"
+              inputmode="decimal" autocorrect="false" autocapitalize="none" spellcheck="false">
+            <div class="fr-messages-group" id="fr-input--messages-2318eba1-414f-49b9-91ed-7b242b5ee130"
+              aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="fr-col-1 fr-span-cat">
+          <div class="fr-input-group grilleVentilation" id="fr-input-group-49875974-48f1-4252-ae30-698f6384c9b9">
+            <p class="fr-text--xs fr-prev-input"><span class="fr-sr-only">ventilation précédente C</span> - <span
+                class="fr-sr-only">Aucune donnée</span></p>
+            <label class="fr-label" for="fr-input-49875974-48f1-4252-ae30-698f6384c9b9"><!---->C<!----></label><input
+              id="fr-input-49875974-48f1-4252-ae30-698f6384c9b9" class="fr-input"
+              aria-describedby="fr-input--messages-49875974-48f1-4252-ae30-698f6384c9b9"
+              name="fr-input-49875974-48f1-4252-ae30-698f6384c9b9" type="text" placeholder="-" autocomplete="off"
+              inputmode="decimal" autocorrect="false" autocapitalize="none" spellcheck="false">
+            <div class="fr-messages-group" id="fr-input--messages-49875974-48f1-4252-ae30-698f6384c9b9"
+              aria-live="polite"></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="fr-grid-row fr-div-function" role="group" aria-labelledby="iia">
+        <h4 class="fr-col-7 fr-title-function fr-text--md fr-text--regular" id="iia">
+          Intégration (inter) applicative IA/IIA
+        </h4>
+        <div class="fr-col-1 fr-span-cat">
+          <div class="fr-input-group grilleVentilation" id="fr-input-group-f584dfbc-a089-499e-ab98-b713e1566d23">
+            <p class="fr-text--xs fr-prev-input"><span class="fr-sr-only">ventilation précédente A++</span> - <span
+                class="fr-sr-only">Aucune donnée</span></p>
+            <label class="fr-label" for="fr-input-f584dfbc-a089-499e-ab98-b713e1566d23"><!---->A++<!----></label><input
+              id="fr-input-f584dfbc-a089-499e-ab98-b713e1566d23" class="fr-input"
+              aria-describedby="fr-input--messages-f584dfbc-a089-499e-ab98-b713e1566d23"
+              name="fr-input-f584dfbc-a089-499e-ab98-b713e1566d23" type="text" placeholder="-" autocomplete="off"
+              inputmode="decimal" autocorrect="false" autocapitalize="none" spellcheck="false">
+            <div class="fr-messages-group" id="fr-input--messages-f584dfbc-a089-499e-ab98-b713e1566d23"
+              aria-live="polite"></div>
+
+          </div>
+        </div>
+        <div class="fr-col-1 fr-span-cat">
+          <div class="fr-input-group grilleVentilation" id="fr-input-group-36753190-9341-489e-8d1e-f113685dd282">
+            <p class="fr-text--xs fr-prev-input"><span class="fr-sr-only">ventilation précédente A+</span> - <span
+                class="fr-sr-only">Aucune donnée</span></p>
+            <label class="fr-label" for="fr-input-36753190-9341-489e-8d1e-f113685dd282"><!---->A+<!----></label><input
+              id="fr-input-36753190-9341-489e-8d1e-f113685dd282" class="fr-input"
+              aria-describedby="fr-input--messages-36753190-9341-489e-8d1e-f113685dd282"
+              name="fr-input-36753190-9341-489e-8d1e-f113685dd282" type="text" placeholder="-" autocomplete="off"
+              inputmode="decimal" autocorrect="false" autocapitalize="none" spellcheck="false">
+            <div class="fr-messages-group" id="fr-input--messages-36753190-9341-489e-8d1e-f113685dd282"
+              aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="fr-col-1 fr-span-cat">
+          <div class="fr-input-group grilleVentilation" id="fr-input-group-85a4ea4a-f462-4f53-85ea-ad03677cf00f">
+            <p class="fr-text--xs fr-prev-input"><span class="fr-sr-only">ventilation précédente A</span> - <span
+                class="fr-sr-only">Aucune donnée</span></p><label class="fr-label"
+              for="fr-input-85a4ea4a-f462-4f53-85ea-ad03677cf00f"><!---->A<!----></label><input
+              id="fr-input-85a4ea4a-f462-4f53-85ea-ad03677cf00f" class="fr-input"
+              aria-describedby="fr-input--messages-85a4ea4a-f462-4f53-85ea-ad03677cf00f"
+              name="fr-input-85a4ea4a-f462-4f53-85ea-ad03677cf00f" type="text" placeholder="-" autocomplete="off"
+              inputmode="decimal" autocorrect="false" autocapitalize="none" spellcheck="false">
+            <div class="fr-messages-group" id="fr-input--messages-85a4ea4a-f462-4f53-85ea-ad03677cf00f"
+              aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="fr-col-1 fr-span-cat">
+          <div class="fr-input-group grilleVentilation" id="fr-input-group-caf9096e-1444-4d2e-98f5-3f15014e73c1">
+            <p class="fr-text--xs fr-prev-input"><span class="fr-sr-only">ventilation précédente B</span> - <span
+                class="fr-sr-only">Aucune donnée</span></p>
+            <label class="fr-label" for="fr-input-caf9096e-1444-4d2e-98f5-3f15014e73c1"><!---->B<!----></label><input
+              id="fr-input-caf9096e-1444-4d2e-98f5-3f15014e73c1" class="fr-input"
+              aria-describedby="fr-input--messages-caf9096e-1444-4d2e-98f5-3f15014e73c1"
+              name="fr-input-caf9096e-1444-4d2e-98f5-3f15014e73c1" type="text" placeholder="-" autocomplete="off"
+              inputmode="decimal" autocorrect="false" autocapitalize="none" spellcheck="false">
+            <div class="fr-messages-group" id="fr-input--messages-caf9096e-1444-4d2e-98f5-3f15014e73c1"
+              aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="fr-col-1 fr-span-cat">
+          <div class="fr-input-group grilleVentilation" id="fr-input-group-cc1c5e3a-0ea8-4f65-972b-d09a204059f4">
+            <p class="fr-text--xs fr-prev-input"><span class="fr-sr-only">ventilation précédente C</span> - <span
+                class="fr-sr-only">Aucune donnée</span></p>
+            <label class="fr-label" for="fr-input-cc1c5e3a-0ea8-4f65-972b-d09a204059f4"><!---->C<!----></label><input
+              id="fr-input-cc1c5e3a-0ea8-4f65-972b-d09a204059f4" class="fr-input"
+              aria-describedby="fr-input--messages-cc1c5e3a-0ea8-4f65-972b-d09a204059f4"
+              name="fr-input-cc1c5e3a-0ea8-4f65-972b-d09a204059f4" type="text" placeholder="-" autocomplete="off"
+              inputmode="decimal" autocorrect="false" autocapitalize="none" spellcheck="false">
+            <div class="fr-messages-group" id="fr-input--messages-cc1c5e3a-0ea8-4f65-972b-d09a204059f4"
+              aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Version DL/DT/DD du tableau -->
+      <div class="fr-grid-row fr-div-function fr-py-4v">
+        <h4 class="fr-col-7 fr-text--md fr-title-function"><b>Total</b></h4>
+        <div class="fr-col-5">
+          <!--Début liste-->
+          <dl class="fr-grid-row total">
+            <div class="fr-col fr-span-cat">
+              <dt class="fr-sr-only"> A++</dt>
+              <dd>
+                <b>-</b><span class="fr-sr-only">aucune donnée saisie</span>
+              </dd>
+            </div>
+            <div class="fr-col fr-span-cat">
+              <dt class="fr-sr-only"> A+</dt>
+              <dd>
+                <b>-</b><span class="fr-sr-only">aucune donnée saisie</span>
+              </dd>
+            </div>
+            <div class="fr-col fr-span-cat">
+              <dt class="fr-sr-only"> A</dt>
+              <dd>
+                <b>-</b><span class="fr-sr-only">aucune donnée saisie</span>
+              </dd>
+            </div>
+            <div class="fr-col fr-span-cat">
+              <dt class="fr-sr-only"> B</dt>
+              <dd>
+                <b>-</b><span class="fr-sr-only">aucune donnée saisie</span>
+              </dd>
+            </div>
+            <div class="fr-col fr-span-cat">
+              <dt class="fr-sr-only"> C</dt>
+              <dd>
+                <b>-</b><span class="fr-sr-only">aucune donnée saisie</span>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+  <script src='https://main--ds-gouv.netlify.app/dist/dsfr.nomodule.min.js'></script>
+</body>
+
+</html>
