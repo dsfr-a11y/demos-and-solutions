@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Démo Modale prolongation de session</title>
+    <link
+      rel="stylesheet"
+      href="https://main--ds-gouv.netlify.app/dist/dsfr.main.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://main--ds-gouv.netlify.app/dist/utility/utility.main.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://main--ds-gouv.netlify.app/dist/utility/icons/icons.min.css"
+    />
+
+    <style>
+      .modal-expire {
+        display: grid;
+      }
+      .modal-expire__note {
+        order: 2;
+        font-style: italic;
+      }
+      .modal-expire-timer {
+        background: var(--background-alt-grey)
+      }
+      .modal-expire-timer__time {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 2rem;
+      }
+      .modal-expire-timer__digit {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--text-default-grey);
+        margin-bottom: 0.8rem;
+        width: 3.9rem;
+      }
+      .modal-expire-timer__separator {
+        font-size: 3rem;
+        font-weight: 700;
+        margin: 0rem 0.8rem 01rem;
+        color: var(--text-default-grey);
+        width: 1rem;
+      }
+      .modal-expire-timer__labels {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+        color: var(--text-mention-grey);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+
+      
+      <button
+        aria-controls="modal-0"
+        data-fr-opened="false"
+        type="button"
+        class="fr-btn"
+      >
+        Ouvrir la modale
+      </button>
+      <dialog
+        id="modal-0"
+        class="fr-modal"
+        aria-labelledby="modal-0-title"
+        data-fr-concealing-backdrop="true"
+      >
+        <div class="fr-container fr-container--fluid fr-container-md">
+          <div class="fr-grid-row fr-grid-row--center">
+            <div class="fr-col-12 fr-col-md-8 fr-col-lg-6">
+              <div class="fr-modal__body">
+                <div class="fr-modal__header">
+                  <button
+                    aria-controls="modal-0"
+                    title="Fermer"
+                    type="button"
+                    id="button-5"
+                    class="fr-btn--close fr-btn">
+                    Fermer
+                  </button>
+                </div>
+                <div class="fr-modal__content modal-expire">
+                  <h2 id="modal-0-title" class="fr-modal__title">
+                    Votre session va bientôt expirer
+                  </h2>
+                  <p class="fr-text--xs modal-expire__note">
+                      Note : les modifications non enregistrées pourraient être
+                      perdues
+                  </p>
+                  <p>
+                    Pour votre sécurité et la protection de vos données, les
+                    sessions sont limitées après une période d'activité.
+                  </p>
+                  <h3 class="fr-text fr-text--md">
+                    Votre session se terminera dans : 
+                  </h3>
+                  <p class="modal-expire-timer fr-pb-3v">
+                    <span class="modal-expire-timer__time">
+                      <span id="minutes" class="modal-expire-timer__digit">03</span>
+                      <span class="fr-sr-only">minutes</span>
+                      <span class="modal-expire-timer__separator" aria-hidden="true"> : </span>
+                      <span id="seconds" class="modal-expire-timer__digit">13</span>
+                      <span class="fr-sr-only">secondes</span>
+                    </span>
+                    <span class="modal-expire-timer__labels" aria-hidden="true">
+                      <span>Minutes</span><span>Secondes</span>
+                    </span>
+                  </p>
+                </div>
+                <!-- liste pour les boutons -->
+                <div class="fr-modal__footer">
+                  <ul
+                    class="fr-btns-group fr-btns-group--inline fr-btns-group--right">
+                    <li>
+                      <button type="button" class="fr-btn fr-btn--secondary">
+                        Se déconnecter maintenant
+                      </button>
+                    </li>
+                    <li>
+                      <button type="button" class="fr-btn fr-btn">
+                        Prolonger la session
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+    </main>
+    <script>
+      /**
+       * Initialise le timer.
+       *
+       * @param {number} totalSeconds  Durée totale en secondes (paramètre configurable).
+       */
+      function startSeparatedTimer(totalSeconds) {
+        // Références aux deux éléments d’affichage
+        const minEl = document.getElementById("minutes");
+        const secEl = document.getElementById("seconds");
+
+        // Valeur courante en secondes
+        let remaining = totalSeconds;
+
+        // Fonction de mise à jour des secondes (appelée chaque seconde)
+        const updateSeconds = () => {
+          const seconds = remaining % 60;
+          secEl.textContent = seconds.toString().padStart(2, "0");
+          if (remaining === 0) clearInterval(secInterval);
+        };
+
+        // Fonction de mise à jour des minutes (appelée chaque minute)
+        const updateMinutes = () => {
+          const minutes = Math.floor(remaining / 60);
+          minEl.textContent = minutes.toString().padStart(2, "0");
+          if (remaining === 0) clearInterval(minInterval);
+        };
+
+        // Première mise à jour immédiate
+        updateMinutes();
+        updateSeconds();
+
+        // Intervalles distincts
+        const secInterval = setInterval(() => {
+          if (remaining > 0) remaining--;
+          updateSeconds();
+          // Si on vient de changer de minute, on rafraîchit l’affichage des minutes
+          if (remaining % 60 === 59) updateMinutes();
+          if (remaining === 0) clearInterval(secInterval);
+        }, 1000);
+
+        // L’intervalle des minutes n’est déclenché qu’une fois par minute,
+        // mais on le garde au cas où l’on veut forcer le rafraîchissement
+        // même si le compteur atteint 0.
+        const minInterval = setInterval(() => {
+          if (remaining === 0) clearInterval(minInterval);
+          else updateMinutes();
+        }, 60000);
+      }
+      const sessionTimeoutModal = document.getElementById("button-5");
+      // Exemple : timer de 7 minutes 30 secondes → 450 s
+      const duréeEnSecondes = 299; // ← paramètre à adapter
+      const startTimer = () => {
+        startSeparatedTimer(duréeEnSecondes);
+        sessionTimeoutModal.removeEventListener("focus", startTimer);
+      };
+      sessionTimeoutModal.addEventListener("focus", startTimer);
+    </script>
+    <script
+      type="module"
+      src="https://main--ds-gouv.netlify.app/dist/core/core.module.min.js"
+    ></script>
+    <script
+      type="module"
+      src="https://main--ds-gouv.netlify.app/dist/component/modal/modal.module.min.js"
+    ></script>
+  </body>
+</html>
